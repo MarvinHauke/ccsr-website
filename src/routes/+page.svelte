@@ -60,16 +60,13 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section class="tech-pattern bg-secondary-900 text-white">
+<section class="tech-pattern themed-surface" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--button-bg) 100%);">
 	<div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-		<div class="text-center">
-			<h1 class="text-primary-400 mb-6 font-mono text-4xl font-bold md:text-6xl">
-				Irregular
-			</h1>
-			<p class="mb-4 font-mono text-lg text-gray-300 md:text-xl">
+		<div class="max-w-4xl main-content">
+			<p class="mb-4 font-mono text-2xl md:text-3xl font-bold" style="color: var(--text-primary);">
 				Elektronische Musikgeräte Service & Entwicklung
 			</p>
-			<p class="mx-auto mb-8 max-w-3xl text-lg text-gray-400">
+			<p class="mb-8 max-w-3xl text-lg" style="color: var(--text-muted);">
 				Professionelle Reparatur-Services, Custom Instrument Development und innovative 
 				Musiktechnologie-Lösungen. Von Circuit-Level Diagnostik bis zu hochmodernen elektronischen Instrumenten.
 			</p>
@@ -78,7 +75,16 @@
 				<a href="/kontakt" class="tech-button"> Service Anfragen </a>
 				<a
 					href="/services"
-					class="text-primary-400 rounded-lg border border-primary-600 px-6 py-3 font-mono font-medium transition-all duration-200 hover:bg-primary-600 hover:text-white"
+					class="rounded-lg border px-6 py-3 font-mono font-medium transition-all duration-200"
+					style="color: var(--accent-color); border-color: var(--accent-color);"
+					onmouseenter={(e) => {
+						e.target.style.background = 'var(--accent-color)';
+						e.target.style.color = 'white';
+					}}
+					onmouseleave={(e) => {
+						e.target.style.background = 'transparent';
+						e.target.style.color = 'var(--accent-color)';
+					}}
 				>
 					Services Ansehen
 				</a>
@@ -88,11 +94,11 @@
 </section>
 
 <!-- Services Section -->
-<section class="bg-secondary-50 py-16">
+<section class="themed-bg py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="mb-12 text-center">
-			<h2 class="mb-4 font-mono text-3xl font-bold text-secondary-900">Services & Entwicklung</h2>
-			<p class="mx-auto max-w-2xl text-lg text-secondary-600">
+		<div class="mb-12 content-align">
+			<h2 class="mb-4 font-mono text-3xl font-bold" style="color: var(--text-primary);">Services & Entwicklung</h2>
+			<p class="max-w-2xl text-lg" style="color: var(--text-muted);">
 				Professionelle Reparatur-Services und Custom Instrument Development für die Electronic Music Community.
 			</p>
 		</div>
@@ -101,16 +107,16 @@
 			{#each services as service}
 				<div class="service-card">
 					<div class="mb-4 text-4xl">{service.icon}</div>
-					<h3 class="mb-3 font-mono text-xl font-semibold text-secondary-900">
+					<h3 class="mb-3 font-mono text-xl font-semibold" style="color: var(--text-primary);">
 						{service.title}
 					</h3>
-					<p class="mb-4 text-secondary-600">
+					<p class="mb-4" style="color: var(--text-muted);">
 						{service.description}
 					</p>
 					<ul class="space-y-2">
 						{#each service.features as feature}
-							<li class="flex items-center text-sm text-secondary-700">
-								<span class="mr-2 font-mono text-primary-600">></span>
+							<li class="flex items-center text-sm" style="color: var(--text-primary);">
+								<span class="mr-2 font-mono" style="color: var(--accent-color);">></span>
 								{feature}
 							</li>
 						{/each}
@@ -122,21 +128,21 @@
 </section>
 
 <!-- Recent Work Section -->
-<section class="bg-white py-16">
+<section class="themed-surface py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="mb-12 text-center">
-			<h2 class="mb-4 font-mono text-3xl font-bold text-secondary-900">Aktuelle Projekte</h2>
-			<p class="text-lg text-secondary-600">
+		<div class="mb-12 content-align">
+			<h2 class="mb-4 font-mono text-3xl font-bold" style="color: var(--text-primary);">Aktuelle Projekte</h2>
+			<p class="text-lg" style="color: var(--text-muted);">
 				Echtzeit-Übersicht der Reparatur-Warteschlange und Entwicklungsprojekte.
 			</p>
 		</div>
 
-		<div class="rounded-lg bg-secondary-50 p-6 shadow-lg">
+		<div class="rounded-lg p-6 shadow-lg" style="background: var(--button-bg);">
 			<div class="code-block mb-6">
-				<div class="mb-2 font-mono text-xs text-green-400">
+				<div class="mb-2 font-mono text-xs" style="color: var(--status-green);">
 					// Irregular Projekt-Warteschlange - Letztes Update: {new Date().toLocaleString('de-DE')}
 				</div>
-				<div class="font-mono text-xs text-accent-400">
+				<div class="font-mono text-xs" style="color: var(--accent-color);">
 					SERVICE STATUS: ONLINE | System Status: OPERATIV | Aktive Projekte: {currentProjects} items
 				</div>
 			</div>
@@ -144,28 +150,29 @@
 			<div class="space-y-4">
 				{#each recentWork as work}
 					<div
-					class="border-secondary-200 flex items-center justify-between rounded border bg-white p-4"
+						class="themed-surface flex items-center justify-between rounded border p-4"
 					>
-					<div class="flex-1">
-					<div class="font-mono font-medium text-secondary-900">
-					{work.device}
-					</div>
-					<div class="text-sm text-secondary-600">
-					Problem: {work.issue}
-					</div>
-					</div>
-					<div class="ml-4">
-					<span
-					class="rounded-full px-3 py-1 font-mono text-xs
-					{work.status === 'Abgeschlossen'
-					? 'bg-success-500 text-white'
-					: work.status === 'In Bearbeitung'
-					? 'bg-warning-500 text-white'
-					: 'bg-primary-500 text-white'}"
-					>
-					{work.status}
-					</span>
-					</div>
+						<div class="flex-1">
+							<div class="font-mono font-medium" style="color: var(--text-primary);">
+								{work.device}
+							</div>
+							<div class="text-sm" style="color: var(--text-muted);">
+								Problem: {work.issue}
+							</div>
+						</div>
+						<div class="ml-4">
+							<span
+								class="rounded-full px-3 py-1 font-mono text-xs text-white
+								{work.status === 'Abgeschlossen'
+									? 'status-online'
+									: work.status === 'In Bearbeitung'
+									? 'status-busy'
+									: ''}"
+								style="{work.status === 'Diagnostiziert' ? `background: var(--accent-color);` : ''}"
+							>
+								{work.status}
+							</span>
+						</div>
 					</div>
 				{/each}
 			</div>
@@ -174,18 +181,29 @@
 </section>
 
 <!-- CTA Section -->
-<section class="bg-primary-700 py-16 text-white">
-	<div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-		<h2 class="mb-4 font-mono text-3xl font-bold">Benötigen Sie professionellen Service?</h2>
-		<p class="mb-8 text-xl text-blue-100">
-			Professionelle Diagnostik und Reparatur-Services für alle elektronischen Musikgeräte. 
-			Custom Instrument Development und innovative Musiktechnologie-Lösungen.
-		</p>
-		<a
-			href="/kontakt"
-			class="inline-block rounded-lg bg-white px-8 py-4 font-mono font-semibold text-primary-700 shadow-lg transition-all duration-200 hover:bg-secondary-100"
-		>
-			Jetzt Kontakt aufnehmen
-		</a>
+<section class="py-16" style="background: var(--accent-color); color: white;">
+	<div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+		<div class="content-align">
+			<h2 class="mb-4 font-mono text-3xl font-bold">Benötigen Sie professionellen Service?</h2>
+			<p class="mb-8 text-xl opacity-90 max-w-3xl">
+				Professionelle Diagnostik und Reparatur-Services für alle elektronischen Musikgeräte. 
+				Custom Instrument Development und innovative Musiktechnologie-Lösungen.
+			</p>
+			<a
+				href="/kontakt"
+				class="inline-block rounded-lg px-8 py-4 font-mono font-semibold shadow-lg transition-all duration-200"
+				style="background: white; color: var(--accent-color);"
+				onmouseenter={(e) => {
+					e.target.style.background = 'var(--bg-surface)';
+					e.target.style.transform = 'translateY(-2px)';
+				}}
+				onmouseleave={(e) => {
+					e.target.style.background = 'white';
+					e.target.style.transform = 'translateY(0)';
+				}}
+			>
+				Jetzt Kontakt aufnehmen
+			</a>
+		</div>
 	</div>
 </section>

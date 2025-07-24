@@ -1,8 +1,21 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
+	import { theme } from '$lib/stores/theme';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+	import { onMount } from 'svelte';
 
 	let mobileMenuOpen = $state(false);
+
+	// Initialize theme on mount
+	onMount(() => {
+		const currentTheme = $theme;
+		if (currentTheme === 'tr808') {
+			document.documentElement.setAttribute('data-theme', 'tr808');
+		} else {
+			document.documentElement.removeAttribute('data-theme');
+		}
+	});
 
 	const navigation = [
 		{ name: 'Home', href: '/' },
@@ -25,21 +38,25 @@
 	let { children } = $props();
 </script>
 
-<div class="min-h-screen bg-gray-50">
+<div class="min-h-screen themed-bg">
 	<!-- Navigation -->
-	<nav class="border-b border-gray-200 bg-white shadow-sm">
+	<nav class="border-b themed-surface shadow-sm">
 		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<div class="flex h-16 justify-between">
 				<!-- Logo/Brand -->
 				<div class="flex items-center">
-					<a href="/" class="flex items-center space-x-3">
-						<div class="font-mono text-xl font-bold text-primary-700">
-							Irregular
-						</div>
-						<div
-							class="hidden rounded bg-secondary-100 px-2 py-1 font-mono text-xs text-secondary-600 lg:block"
-						>
-							Electronic Music Equipment Service
+					<a href="/" class="flex items-start space-x-4">
+						<div class="flex flex-col">
+							<div class="font-mono text-3xl font-bold leading-tight flex">
+								<span class="logo-i" style="color: var(--accent-color); margin-right: 2px;">I</span>
+								<span style="color: var(--accent-color);">rregular</span>
+							</div>
+							<div
+								class="hidden font-mono text-xs opacity-80 lg:block"
+								style="color: var(--text-muted); margin-top: -2px; margin-left: 18px;"
+							>
+								Electronic Music Equipment Service
+							</div>
 						</div>
 					</a>
 				</div>
@@ -49,22 +66,28 @@
 					{#each navigation as item}
 						<a
 							href={item.href}
-							class="px-3 py-2 font-mono text-sm font-medium text-secondary-600 transition-colors hover:text-primary-700
-                     {currentPath === item.href
-								? 'border-b-2 border-primary-700 text-primary-700'
-								: ''}"
+							style="color: {currentPath === item.href ? 'var(--accent-color)' : 'var(--text-muted)'}; 
+								   border-bottom: {currentPath === item.href ? '2px solid var(--accent-color)' : 'none'};"
+							class="px-3 py-2 font-mono text-sm font-medium transition-colors"
+							onmouseenter={(e) => e.target.style.color = 'var(--accent-color)'}
+							onmouseleave={(e) => e.target.style.color = currentPath === item.href ? 'var(--accent-color)' : 'var(--text-muted)'}
 						>
 							{item.name}
 						</a>
 					{/each}
+					<ThemeToggle />
 				</div>
 
-				<!-- Mobile menu button -->
-				<div class="flex items-center md:hidden">
+				<!-- Mobile menu and theme toggle -->
+				<div class="flex items-center space-x-3 md:hidden">
+					<ThemeToggle />
 					<button
 						onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
-						class="p-2 text-secondary-600 hover:text-primary-700"
+						style="color: var(--text-muted);"
+						class="p-2 transition-colors"
 						aria-label="Toggle menu"
+						onmouseenter={(e) => e.target.style.color = 'var(--accent-color)'}
+						onmouseleave={(e) => e.target.style.color = 'var(--text-muted)'}
 					>
 						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							{#if mobileMenuOpen}
@@ -89,12 +112,21 @@
 
 			<!-- Mobile Navigation -->
 			{#if mobileMenuOpen}
-				<div class="border-t border-gray-200 py-2 md:hidden">
+				<div class="border-t py-2 md:hidden" style="border-color: var(--border-color);">
 					{#each navigation as item}
 						<a
 							href={item.href}
-							class="block px-4 py-2 text-secondary-600 transition-colors hover:bg-gray-50 hover:text-primary-700
-                     {currentPath === item.href ? 'bg-primary-50 text-primary-700' : ''}"
+							class="block px-4 py-2 transition-colors"
+							style="color: {currentPath === item.href ? 'var(--accent-color)' : 'var(--text-muted)'}; 
+								   background: {currentPath === item.href ? 'var(--button-bg)' : 'transparent'};"
+							onmouseenter={(e) => {
+								e.target.style.color = 'var(--accent-color)';
+								e.target.style.background = 'var(--button-bg)';
+							}}
+							onmouseleave={(e) => {
+								e.target.style.color = currentPath === item.href ? 'var(--accent-color)' : 'var(--text-muted)';
+								e.target.style.background = currentPath === item.href ? 'var(--button-bg)' : 'transparent';
+							}}
 						>
 							{item.name}
 						</a>
@@ -110,16 +142,16 @@
 	</main>
 
 	<!-- Footer -->
-	<footer class="mt-12 border-t border-gray-200 bg-white">
+	<footer class="mt-12 border-t themed-surface">
 		<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 			<div class="text-center">
-				<div class="mb-2 font-mono text-lg font-bold text-primary-700">
+				<div class="footer-logo mb-2 font-mono text-xl font-bold" style="color: var(--accent-color);">
 					Irregular
 				</div>
-				<p class="font-mono text-sm text-secondary-600">
+				<p class="font-mono text-sm" style="color: var(--text-muted);">
 					Electronic Music Equipment Service & Development
 				</p>
-				<p class="mt-2 font-mono text-xs text-secondary-500">
+				<p class="mt-2 font-mono text-xs" style="color: var(--text-muted); opacity: 0.7;">
 					© 2025 Irregular. Alle Rechte vorbehalten.
 				</p>
 			</div>

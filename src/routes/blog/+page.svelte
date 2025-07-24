@@ -86,17 +86,17 @@
 </svelte:head>
 
 <!-- Header -->
-<section class="bg-secondary-900 text-white py-16">
+<section class="py-16" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--button-bg) 100%);">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center">
-			<h1 class="text-4xl md:text-5xl font-mono font-bold text-primary-400 mb-4">
+			<h1 class="text-4xl md:text-5xl font-mono font-bold mb-4" style="color: var(--accent-color);">
 				Technical Blog
 			</h1>
 			<div class="code-block max-w-2xl mx-auto">
-				<div class="text-green-400 font-mono text-sm">
+				<div class="font-mono text-sm" style="color: var(--status-green);">
 					// Technisches Wissen über Synthesizer & DJ Equipment
 				</div>
-				<div class="text-accent-400 font-mono text-xs mt-1">
+				<div class="font-mono text-xs mt-1" style="color: var(--accent-color);">
 					Posts: {blogPosts.filter(p => p.status === 'published').length} published | {blogPosts.filter(p => p.status === 'draft').length} in development
 				</div>
 			</div>
@@ -105,16 +105,26 @@
 </section>
 
 <!-- Category Filter -->
-<section class="py-8 bg-white border-b border-secondary-200">
+<section class="py-8 themed-surface">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-wrap justify-center gap-4">
 			{#each categories as category}
 				<button
 					onclick={() => selectedCategory = category}
-					class="px-4 py-2 rounded-full font-mono text-sm transition-all duration-200
-						   {selectedCategory === category 
-							 ? 'bg-primary-600 text-white' 
-							 : 'bg-secondary-100 text-secondary-700 hover:bg-secondary-200'}"
+					class="px-4 py-2 rounded-full font-mono text-sm transition-all duration-200"
+					style="background: {selectedCategory === category ? 'var(--accent-color)' : 'var(--button-bg)'};
+						   color: {selectedCategory === category ? 'white' : 'var(--text-primary)'};
+						   border: 1px solid {selectedCategory === category ? 'var(--accent-color)' : 'var(--border-color)'};"
+					onmouseenter={(e) => {
+						if (selectedCategory !== category) {
+							e.target.style.borderColor = 'var(--accent-color)';
+						}
+					}}
+					onmouseleave={(e) => {
+						if (selectedCategory !== category) {
+							e.target.style.borderColor = 'var(--border-color)';
+						}
+					}}
 				>
 					{category}
 				</button>
@@ -124,42 +134,45 @@
 </section>
 
 <!-- Blog Posts -->
-<section class="py-16 bg-secondary-50">
+<section class="py-16 themed-bg">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			{#each filteredPosts as post}
 				<article class="service-card group">
 					<a href="/blog/{post.slug}" class="block">
 						<div class="flex items-center justify-between mb-4">
-							<span class="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-xs font-mono font-medium">
+							<span class="px-3 py-1 rounded-full text-xs font-mono font-medium"
+								  style="background: var(--button-bg); color: var(--accent-color);">
 								{post.category}
 							</span>
-							<span class="text-secondary-500 text-xs font-mono">
+							<span class="text-xs font-mono" style="color: var(--text-muted);">
 								{post.readTime}
 							</span>
 						</div>
 
-						<h2 class="text-xl font-mono font-bold text-secondary-900 mb-3 group-hover:text-primary-700 transition-colors">
+						<h2 class="text-xl font-mono font-bold mb-3 transition-colors group-hover:opacity-80"
+							style="color: var(--text-primary);">
 							{post.title}
 						</h2>
 
-						<p class="text-secondary-600 text-sm mb-4 leading-relaxed">
+						<p class="text-sm mb-4 leading-relaxed" style="color: var(--text-muted);">
 							{post.excerpt}
 						</p>
 
 						<div class="flex flex-wrap gap-2 mb-4">
 							{#each post.tags as tag}
-								<span class="bg-secondary-200 text-secondary-700 px-2 py-1 rounded text-xs font-mono">
+								<span class="px-2 py-1 rounded text-xs font-mono"
+									  style="background: var(--button-bg); color: var(--text-primary);">
 									{tag}
 								</span>
 							{/each}
 						</div>
 
-						<div class="flex items-center justify-between text-xs text-secondary-500 font-mono">
+						<div class="flex items-center justify-between text-xs font-mono" style="color: var(--text-muted);">
 							<time datetime={post.date}>
 								{formatDate(post.date)}
 							</time>
-							<span class="text-primary-600 group-hover:text-primary-700">
+							<span class="group-hover:opacity-80 transition-opacity" style="color: var(--accent-color);">
 								Artikel lesen →
 							</span>
 						</div>
@@ -171,10 +184,10 @@
 		{#if filteredPosts.length === 0}
 			<div class="text-center py-12">
 				<div class="text-4xl mb-4">🔧</div>
-				<h3 class="text-xl font-mono font-bold text-secondary-900 mb-2">
+				<h3 class="text-xl font-mono font-bold mb-2" style="color: var(--text-primary);">
 					Keine Artikel in dieser Kategorie
 				</h3>
-				<p class="text-secondary-600">
+				<p style="color: var(--text-muted);">
 					Wählen Sie eine andere Kategorie oder schauen Sie später wieder vorbei.
 				</p>
 			</div>
@@ -183,21 +196,21 @@
 </section>
 
 <!-- Newsletter Signup -->
-<section class="py-16 bg-primary-700 text-white">
+<section class="py-16 text-white" style="background: var(--accent-color);">
 	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 		<h2 class="text-3xl font-mono font-bold mb-4">
 			Technical Updates
 		</h2>
-		<p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+		<p class="mb-8 max-w-2xl mx-auto opacity-90">
 			Bleiben Sie auf dem Laufenden über neue Reparatur-Guides, 
 			technische Artikel und Equipment-Updates.
 		</p>
 		
-		<div class="bg-white rounded-lg p-6 max-w-md mx-auto">
-			<div class="text-secondary-900 font-mono text-sm mb-4">
+		<div class="rounded-lg p-6 max-w-md mx-auto" style="background: white;">
+			<div class="font-mono text-sm mb-4" style="color: var(--text-primary);">
 				// Newsletter Feature - Coming Soon
 			</div>
-			<div class="text-secondary-600 text-xs">
+			<div class="text-xs" style="color: var(--text-muted);">
 				Email-Updates über neue technische Artikel und Reparatur-Guides
 			</div>
 		</div>
