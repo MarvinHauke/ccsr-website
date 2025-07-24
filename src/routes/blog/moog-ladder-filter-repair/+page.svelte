@@ -13,36 +13,38 @@
 	<meta name="description" content={meta.excerpt} />
 </svelte:head>
 
-<div class="bg-white py-16">
+<div class="themed-bg py-16">
 	<div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 		<!-- Header -->
-		<header class="mb-12">
+		<header class="mb-12 main-content">
 			<div class="mb-4">
-				<a href="/blog" class="text-primary-600 hover:text-primary-700 font-mono text-sm">
+				<a href="/blog" class="font-mono text-sm transition-colors" style="color: var(--blog-accent);">
 					← Zurück zum Blog
 				</a>
 			</div>
 			
 			<div class="flex flex-wrap items-center gap-2 mb-4">
-				<span class="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-xs font-mono font-medium">
+				<span class="px-3 py-1 rounded-full text-xs font-mono font-medium"
+					  style="background: var(--blog-accent); color: white;">
 					{meta.category}
 				</span>
-				<time class="text-secondary-500 text-sm font-mono">
+				<time class="text-sm font-mono" style="color: var(--text-muted);">
 					15. Januar 2025
 				</time>
 			</div>
 			
-			<h1 class="text-4xl font-mono font-bold text-secondary-900 mb-4">
+			<h1 class="text-4xl font-mono font-bold mb-4" style="color: var(--text-primary);">
 				{meta.title}
 			</h1>
 			
-			<p class="text-xl text-secondary-600 leading-relaxed mb-6">
+			<p class="text-xl leading-relaxed mb-6" style="color: var(--text-muted);">
 				{meta.excerpt}
 			</p>
 			
 			<div class="flex flex-wrap gap-2">
 				{#each meta.tags as tag}
-					<span class="bg-secondary-200 text-secondary-700 px-2 py-1 rounded text-xs font-mono">
+					<span class="px-2 py-1 rounded text-xs font-mono"
+						  style="background: var(--blog-highlight); color: var(--bg-primary);">
 						{tag}
 					</span>
 				{/each}
@@ -50,7 +52,7 @@
 		</header>
 
 		<!-- Content -->
-		<article class="prose prose-lg max-w-none">			
+		<article class="prose prose-lg max-w-none main-content">			
 			<h2>Moog Ladder Filter: Reparatur und Kalibrierung</h2>
 			
 			<p>Das <strong>Moog Ladder Filter</strong> ist eines der charakteristischsten Elemente in der Geschichte der elektronischen Musik. Entwickelt von Bob Moog in den 1960er Jahren, definiert dieses Filter den unverwechselbaren Klang der Moog-Synthesizer.</p>
@@ -86,7 +88,7 @@
 			<h3>Reparatur-Prozess</h3>
 			
 			<h4>Schritt 1: Diagnose</h4>
-			<div class="bg-secondary-900 text-green-400 font-mono text-sm p-4 rounded-lg my-4">
+			<div class="code-block my-4">
 				1. Visuell Inspektion der PCB<br>
 				2. Spannungen messen (±15V, +5V)<br>
 				3. Signal-Tracing mit Oszilloskop<br>
@@ -120,17 +122,18 @@
 			<h3>Fazit</h3>
 			<p>Das Moog Ladder Filter ist ein Meisterwerk der Analog-Technik, das bei sachgemäßer Wartung Jahrzehnte lang zuverlässig funktioniert. Die charakteristische Klangfärbung macht jeden Reparatur-Aufwand mehr als wert.</p>
 			
-			<hr class="my-8">
+			<hr class="my-8" style="border-color: var(--border-color);">
 			<p><em>Haben Sie Probleme mit Ihrem Moog Filter? Kontaktieren Sie uns für eine professionelle Diagnose und Reparatur.</em></p>
 		</article>
 		
 		<!-- Footer -->
-		<footer class="mt-12 pt-8 border-t border-secondary-200">
+		<footer class="mt-12 pt-8 border-t main-content" style="border-color: var(--border-color);">
 			<div class="flex justify-between items-center">
-				<a href="/blog" class="text-primary-600 hover:text-primary-700 font-mono text-sm">
+				<a href="/blog" class="font-mono text-sm transition-colors" style="color: var(--blog-accent);">
 					← Alle Blog-Posts
 				</a>
-				<a href="/kontakt" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded font-mono text-sm transition-colors">
+				<a href="/kontakt" class="px-4 py-2 rounded font-mono text-sm transition-colors"
+				   style="background: var(--blog-accent); color: white;">
 					Fragen zum Artikel?
 				</a>
 			</div>

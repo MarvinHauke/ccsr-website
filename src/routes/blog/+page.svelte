@@ -88,11 +88,11 @@
 <!-- Header -->
 <section class="py-16" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--button-bg) 100%);">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center">
-			<h1 class="text-4xl md:text-5xl font-mono font-bold mb-4" style="color: var(--accent-color);">
+		<div class="max-w-4xl main-content">
+			<h1 class="text-3xl md:text-4xl font-mono font-bold mb-4" style="color: var(--blog-accent);">
 				Technical Blog
 			</h1>
-			<div class="code-block max-w-2xl mx-auto">
+			<div class="code-block max-w-2xl">
 				<div class="font-mono text-sm" style="color: var(--status-green);">
 					// Technisches Wissen über Synthesizer & DJ Equipment
 				</div>
@@ -107,28 +107,30 @@
 <!-- Category Filter -->
 <section class="py-8 themed-surface">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex flex-wrap justify-center gap-4">
-			{#each categories as category}
-				<button
-					onclick={() => selectedCategory = category}
-					class="px-4 py-2 rounded-full font-mono text-sm transition-all duration-200"
-					style="background: {selectedCategory === category ? 'var(--accent-color)' : 'var(--button-bg)'};
-						   color: {selectedCategory === category ? 'white' : 'var(--text-primary)'};
-						   border: 1px solid {selectedCategory === category ? 'var(--accent-color)' : 'var(--border-color)'};"
-					onmouseenter={(e) => {
-						if (selectedCategory !== category) {
-							e.target.style.borderColor = 'var(--accent-color)';
-						}
-					}}
-					onmouseleave={(e) => {
-						if (selectedCategory !== category) {
-							e.target.style.borderColor = 'var(--border-color)';
-						}
-					}}
-				>
-					{category}
-				</button>
-			{/each}
+		<div class="content-align">
+			<div class="flex flex-wrap gap-4">
+				{#each categories as category}
+					<button
+						onclick={() => selectedCategory = category}
+						class="px-4 py-2 rounded-full font-mono text-sm transition-all duration-200"
+						style="background: {selectedCategory === category ? 'var(--accent-color)' : 'var(--button-bg)'};
+							   color: {selectedCategory === category ? 'white' : 'var(--text-primary)'};
+							   border: 1px solid {selectedCategory === category ? 'var(--accent-color)' : 'var(--border-color)'};"
+						onmouseenter={(e) => {
+							if (selectedCategory !== category) {
+								e.target.style.borderColor = 'var(--accent-color)';
+							}
+						}}
+						onmouseleave={(e) => {
+							if (selectedCategory !== category) {
+								e.target.style.borderColor = 'var(--border-color)';
+							}
+						}}
+					>
+						{category}
+					</button>
+				{/each}
+			</div>
 		</div>
 	</div>
 </section>
@@ -182,14 +184,16 @@
 		</div>
 
 		{#if filteredPosts.length === 0}
-			<div class="text-center py-12">
-				<div class="text-4xl mb-4">🔧</div>
-				<h3 class="text-xl font-mono font-bold mb-2" style="color: var(--text-primary);">
-					Keine Artikel in dieser Kategorie
-				</h3>
-				<p style="color: var(--text-muted);">
-					Wählen Sie eine andere Kategorie oder schauen Sie später wieder vorbei.
-				</p>
+			<div class="py-12">
+				<div class="content-align">
+					<div class="text-4xl mb-4">🔧</div>
+					<h3 class="text-xl font-mono font-bold mb-2" style="color: var(--text-primary);">
+						Keine Artikel in dieser Kategorie
+					</h3>
+					<p style="color: var(--text-muted);">
+						Wählen Sie eine andere Kategorie oder schauen Sie später wieder vorbei.
+					</p>
+				</div>
 			</div>
 		{/if}
 	</div>
@@ -197,21 +201,23 @@
 
 <!-- Newsletter Signup -->
 <section class="py-16 text-white" style="background: var(--accent-color);">
-	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h2 class="text-3xl font-mono font-bold mb-4">
-			Technical Updates
-		</h2>
-		<p class="mb-8 max-w-2xl mx-auto opacity-90">
-			Bleiben Sie auf dem Laufenden über neue Reparatur-Guides, 
-			technische Artikel und Equipment-Updates.
-		</p>
-		
-		<div class="rounded-lg p-6 max-w-md mx-auto" style="background: white;">
-			<div class="font-mono text-sm mb-4" style="color: var(--text-primary);">
-				// Newsletter Feature - Coming Soon
-			</div>
-			<div class="text-xs" style="color: var(--text-muted);">
-				Email-Updates über neue technische Artikel und Reparatur-Guides
+	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="content-align">
+			<h2 class="text-3xl font-mono font-bold mb-4">
+				Technical Updates
+			</h2>
+			<p class="mb-8 max-w-2xl opacity-90">
+				Bleiben Sie auf dem Laufenden über neue Reparatur-Guides, 
+				technische Artikel und Equipment-Updates.
+			</p>
+			
+			<div class="rounded-lg p-6 max-w-md" style="background: white;">
+				<div class="font-mono text-sm mb-4" style="color: var(--text-primary);">
+					// Newsletter Feature - Coming Soon
+				</div>
+				<div class="text-xs" style="color: var(--text-muted);">
+					Email-Updates über neue technische Artikel und Reparatur-Guides
+				</div>
 			</div>
 		</div>
 	</div>

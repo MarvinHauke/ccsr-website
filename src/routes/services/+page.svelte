@@ -52,11 +52,11 @@
 <!-- Header -->
 <section class="py-16" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--button-bg) 100%);">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl">
-			<h1 class="mb-4 font-mono text-4xl font-bold md:text-5xl" style="color: var(--accent-color);">
+		<div class="max-w-4xl main-content">
+			<h1 class="mb-4 font-mono text-3xl font-bold md:text-4xl" style="color: var(--blog-accent);">
 				Professional Services
 			</h1>
-			<p class="max-w-3xl text-xl" style="color: var(--text-primary);">
+			<p class="max-w-3xl text-xl" style="color: var(--text-muted);">
 				Spezialisierte Services für elektronische Musikgeräte und Custom Development
 			</p>
 		</div>

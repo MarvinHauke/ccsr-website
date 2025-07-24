@@ -52,11 +52,11 @@
 <!-- Header -->
 <section class="py-16" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--button-bg) 100%);">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="text-center">
-			<h1 class="mb-4 font-mono text-4xl font-bold md:text-5xl" style="color: var(--accent-color);">
+		<div class="max-w-4xl main-content">
+			<h1 class="mb-4 font-mono text-3xl font-bold md:text-4xl" style="color: var(--blog-accent);">
 				Kontakt
 			</h1>
-			<p class="mx-auto max-w-3xl text-xl" style="color: var(--text-primary);">
+			<p class="max-w-3xl text-xl" style="color: var(--text-muted);">
 				Professionelle Beratung und Service für Ihre elektronischen Musikgeräte
 			</p>
 		</div>
@@ -103,8 +103,6 @@
 									href="mailto:service@irregular.de" 
 									class="font-mono transition-colors"
 									style="color: var(--accent-color);"
-									onmouseenter={(e) => e.target.style.opacity = '0.8'}
-									onmouseleave={(e) => e.target.style.opacity = '1'}
 								>
 									service@irregular.de
 								</a>
@@ -200,8 +198,6 @@
 									required
 									class="w-full rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 transition-all"
 									style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary);"
-									onfocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-									onblur={(e) => e.target.style.borderColor = 'var(--border-color)'}
 									placeholder="Ihr Name"
 								/>
 							</div>
@@ -216,8 +212,6 @@
 									required
 									class="w-full rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 transition-all"
 									style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary);"
-									onfocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-									onblur={(e) => e.target.style.borderColor = 'var(--border-color)'}
 									placeholder="ihre@email.de"
 								/>
 							</div>
@@ -234,8 +228,6 @@
 								required
 								class="w-full rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 transition-all"
 								style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary);"
-								onfocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-								onblur={(e) => e.target.style.borderColor = 'var(--border-color)'}
 							>
 								{#each serviceTypes as service}
 									<option value={service.value}>{service.label}</option>
@@ -254,8 +246,6 @@
 								bind:value={formData.device}
 								class="w-full rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 transition-all"
 								style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary);"
-								onfocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-								onblur={(e) => e.target.style.borderColor = 'var(--border-color)'}
 								placeholder="z.B. Moog Subsequent 37, Pioneer DJM-900"
 							/>
 						</div>
@@ -271,8 +261,6 @@
 								bind:value={formData.issue}
 								class="w-full rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 transition-all"
 								style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary);"
-								onfocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-								onblur={(e) => e.target.style.borderColor = 'var(--border-color)'}
 								placeholder="z.B. Oscillator drift, kein Sound, Display defekt"
 							/>
 						</div>
@@ -288,8 +276,6 @@
 								bind:value={formData.message}
 								class="w-full rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 transition-all"
 								style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary);"
-								onfocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-								onblur={(e) => e.target.style.borderColor = 'var(--border-color)'}
 								placeholder="Beschreiben Sie das Problem so detailliert wie möglich..."
 							></textarea>
 						</div>
@@ -301,8 +287,6 @@
 								disabled={isSubmitting}
 								class="w-full rounded-lg px-6 py-4 font-mono font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
 								style="background: var(--accent-color);"
-								onmouseenter={(e) => !isSubmitting && (e.target.style.transform = 'translateY(-1px)')}
-								onmouseleave={(e) => e.target.style.transform = 'translateY(0)'}
 							>
 								{#if isSubmitting}
 									<span class="flex items-center justify-center space-x-2">
@@ -324,7 +308,7 @@
 <!-- Map/Location Section -->
 <section class="themed-surface py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-8">
+		<div class="content-align mb-8">
 			<h2 class="mb-4 font-mono text-3xl font-bold" style="color: var(--text-primary);">
 				Unser Standort
 			</h2>

@@ -63,9 +63,9 @@
 <section class="tech-pattern themed-surface" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--button-bg) 100%);">
 	<div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
 		<div class="max-w-4xl main-content">
-			<p class="mb-4 font-mono text-2xl md:text-3xl font-bold" style="color: var(--text-primary);">
+			<h1 class="mb-4 font-mono text-3xl font-bold md:text-4xl" style="color: var(--blog-accent);">
 				Elektronische Musikgeräte Service & Entwicklung
-			</p>
+			</h1>
 			<p class="mb-8 max-w-3xl text-lg" style="color: var(--text-muted);">
 				Professionelle Reparatur-Services, Custom Instrument Development und innovative 
 				Musiktechnologie-Lösungen. Von Circuit-Level Diagnostik bis zu hochmodernen elektronischen Instrumenten.

@@ -29,6 +29,8 @@
 	--color-tr808-red: #ff3030;
 	--color-tr808-orange: #ff8800;
 	--color-tr808-yellow-orange: #ffaa33; /* Yellow-orange like TR-808 buttons 5-8 */
+	--color-tr808-matte-orange: #cc7700; /* Matte orange for better contrast */
+	--color-tr808-warm-yellow: #ffcc66; /* Warm yellow for highlights */
 
 	/* Legacy colors for compatibility */
 	--color-primary-50: #eff6ff;
@@ -69,6 +71,8 @@
 	--status-red: var(--color-tr909-red);
 	--status-green: var(--color-tr909-status);
 	--gradient-secondary: var(--color-tr909-matte);
+	--blog-accent: var(--color-tr909-accent);
+	--blog-highlight: var(--color-tr909-accent);
 }
 
 [data-theme='tr808'] {
@@ -84,6 +88,8 @@
 	--status-red: var(--color-tr808-red);
 	--status-green: var(--color-tr808-orange);
 	--gradient-secondary: var(--color-tr808-yellow-orange);
+	--blog-accent: var(--color-tr808-matte-orange);
+	--blog-highlight: var(--color-tr808-warm-yellow);
 }
 
 /* Typography */
@@ -253,9 +259,42 @@
 	color: var(--text-primary);
 }
 
+.prose h4,
+.prose h5,
+.prose h6 {
+	font-family: 'JetBrains Mono', monospace;
+	color: var(--blog-accent);
+	font-weight: 600;
+}
+
+.prose strong {
+	color: var(--blog-highlight);
+	font-weight: 700;
+}
+
+.prose em {
+	color: var(--blog-accent);
+	font-style: italic;
+}
+
+.prose ul li,
+.prose ol li {
+	color: var(--text-primary);
+}
+
+.prose ul li strong,
+.prose ol li strong {
+	color: var(--blog-highlight);
+}
+
+.prose p {
+	color: var(--text-primary);
+	line-height: 1.7;
+}
+
 .prose code {
 	background: var(--button-bg);
-	color: var(--accent-color);
+	color: var(--blog-accent);
 	padding: 0.125rem 0.25rem;
 	border-radius: 0.25rem;
 	font-family: 'JetBrains Mono', monospace;
@@ -264,6 +303,39 @@
 .prose pre {
 	background: var(--bg-surface);
 	border: 1px solid var(--border-color);
+}
+
+.prose hr {
+	border-color: var(--border-color);
+	margin: 2rem 0;
+}
+
+/* Blog-specific typography enhancements */
+.prose blockquote {
+	border-left: 4px solid var(--blog-accent);
+	padding-left: 1rem;
+	margin: 1.5rem 0;
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+.prose a {
+	color: var(--blog-accent);
+	text-decoration: underline;
+	transition: color 0.2s ease;
+}
+
+.prose a:hover {
+	color: var(--blog-highlight);
+}
+
+/* Technical content styling */
+.prose li {
+	margin: 0.5rem 0;
+}
+
+.prose li::marker {
+	color: var(--blog-accent);
 }
 
 /* Status indicators */
