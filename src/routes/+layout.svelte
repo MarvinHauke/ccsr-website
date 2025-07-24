@@ -34,12 +34,12 @@
 				<div class="flex items-center">
 					<a href="/" class="flex items-center space-x-3">
 						<div class="font-mono text-xl font-bold text-primary-700">
-							Circuit Care & Synth Repair
+							Irregular
 						</div>
 						<div
 							class="hidden rounded bg-secondary-100 px-2 py-1 font-mono text-xs text-secondary-600 lg:block"
 						>
-							CCSR
+							Electronic Music Equipment Service
 						</div>
 					</a>
 				</div>
@@ -114,13 +114,13 @@
 		<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 			<div class="text-center">
 				<div class="mb-2 font-mono text-lg font-bold text-primary-700">
-					Circuit Care & Synth Repair
+					Irregular
 				</div>
 				<p class="font-mono text-sm text-secondary-600">
-					Professionelle Synthesizer & DJ Equipment Reparaturen
+					Electronic Music Equipment Service & Development
 				</p>
 				<p class="mt-2 font-mono text-xs text-secondary-500">
-					© 2025 Circuit Care & Synth Repair. Alle Rechte vorbehalten.
+					© 2025 Irregular. Alle Rechte vorbehalten.
 				</p>
 			</div>
 		</div>

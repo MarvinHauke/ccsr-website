@@ -1,70 +1,19 @@
 <script lang="ts">
-	const services = [
+	const djServices = [
 		{
-			category: 'Circuit Repair',
-			icon: '🔧',
-			description: 'Professional circuit-level diagnostics and component repairs',
-			services: [
-				{
-					name: 'PCB Diagnosis & Repair',
-					price: 'Ab 89€',
-					details: 'Vollständige Platinen-Analyse, Komponenten-Test, Trace-Reparaturen'
-				},
-				{
-					name: 'Power Supply Service',
-					price: 'Ab 65€',
-					details: 'Netzteil-Diagnose, Kondensator-Tausch, Spannungsregulierung'
-				},
-				{
-					name: 'Digital Circuit Analysis',
-					price: 'Ab 120€',
-					details: 'Mikrocontroller-Programmierung, EPROM-Service, Logic-Board Repair'
-				}
-			]
+			name: 'Mixer Repair',
+			price: 'Ab 75€',
+			details: 'Crossfader-Tausch, Channel-Reparatur, EQ-Sektion Service'
 		},
 		{
-			category: 'Synthesizer Service',
-			icon: '🎹',
-			description: 'Spezialisiert auf Vintage und moderne Synthesizer',
-			services: [
-				{
-					name: 'Oscillator Calibration',
-					price: 'Ab 95€',
-					details: 'Präzise VCO-Justierung, Tracking-Optimierung, Temperatur-Kompensation'
-				},
-				{
-					name: 'Filter Alignment',
-					price: 'Ab 85€',
-					details: 'Cutoff/Resonance Kalibrierung, Envelope-Response, CV-Scaling'
-				},
-				{
-					name: 'Vintage Restoration',
-					price: 'Auf Anfrage',
-					details: 'Komplette Überholung klassischer Synthesizer (Moog, ARP, Sequential)'
-				}
-			]
+			name: 'Controller Service',
+			price: 'Ab 59€',
+			details: 'Encoder-Reparatur, Button-Tausch, USB/MIDI Troubleshooting'
 		},
 		{
-			category: 'DJ Equipment',
-			icon: '🎧',
-			description: 'Professionelle DJ-Equipment Wartung und Reparatur',
-			services: [
-				{
-					name: 'Mixer Repair',
-					price: 'Ab 75€',
-					details: 'Crossfader-Tausch, Channel-Reparatur, EQ-Sektion Service'
-				},
-				{
-					name: 'Controller Service',
-					price: 'Ab 59€',
-					details: 'Encoder-Reparatur, Button-Tausch, USB/MIDI Troubleshooting'
-				},
-				{
-					name: 'Turntable Maintenance',
-					price: 'Ab 89€',
-					details: 'Motor-Service, Tonarm-Justierung, Pitch-Kalibrierung'
-				}
-			]
+			name: 'Turntable Maintenance',
+			price: 'Ab 89€',
+			details: 'Motor-Service, Tonarm-Justierung, Pitch-Kalibrierung'
 		}
 	];
 
@@ -93,10 +42,10 @@
 </script>
 
 <svelte:head>
-	<title>Services - Circuit Care & Synth Repair | Professionelle Reparatur-Services</title>
+	<title>Services - Irregular | Electronic Music Equipment Service & Development</title>
 	<meta
 		name="description"
-		content="Detaillierte Übersicht unserer Reparatur-Services für Synthesizer, DJ-Equipment und elektronische Musikgeräte."
+		content="Professionelle Services für elektronische Musikgeräte: Circuit Care, Synth Repair und DJ Equipment Wartung."
 	/>
 </svelte:head>
 
@@ -105,61 +54,211 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="text-center">
 			<h1 class="text-primary-400 mb-4 font-mono text-4xl font-bold md:text-5xl">
-				Technical Services
+				Professional Services
 			</h1>
 			<p class="mx-auto max-w-3xl text-xl text-gray-300">
-				Professionelle Reparatur-Services für elektronische Musikgeräte mit circuit-level Präzision
+				Spezialisierte Services für elektronische Musikgeräte und Custom Development
 			</p>
 		</div>
 	</div>
 </section>
 
-<!-- Service Categories -->
+<!-- Circuit Care & Synth Repair - Main Section -->
 <section class="bg-white py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		{#each services as category, index}
-			<div class="mb-16 {index > 0 ? 'border-secondary-200 border-t pt-16' : ''}">
-				<div class="mb-12 text-center">
-					<div class="mb-4 text-5xl">{category.icon}</div>
-					<h2 class="mb-4 font-mono text-3xl font-bold text-secondary-900">
-						{category.category}
-					</h2>
-					<p class="mx-auto max-w-2xl text-lg text-secondary-600">
-						{category.description}
+		<div class="mb-12 text-center">
+			<h2 class="mb-4 font-mono text-3xl font-bold text-secondary-900">
+				Circuit Care & Synth Repair
+			</h2>
+			<p class="mx-auto max-w-3xl text-lg text-secondary-600">
+				Unsere Kernkompetenz: Die perfekte Symbiose aus analoger Synthesizer-Expertise 
+				und präziser Circuit-Level Diagnostik für alle elektronischen Musikgeräte.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+			<!-- Synth Repair -->
+			<div class="space-y-6">
+				<div class="text-center">
+					<div class="mb-4 text-6xl">🎹</div>
+					<h3 class="mb-4 font-mono text-2xl font-bold text-primary-700">
+						Synth Repair
+					</h3>
+					<p class="text-secondary-600">
+						Spezialisierte Reparatur und Wartung von Vintage und modernen Synthesizern
 					</p>
 				</div>
 
-				<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-					{#each category.services as service}
-						<div class="service-card">
-							<div class="mb-4 flex items-start justify-between">
-								<h3 class="font-mono text-xl font-semibold text-secondary-900">
-									{service.name}
-								</h3>
-								<span
-									class="bg-primary-100 rounded-full px-3 py-1 font-mono text-sm font-medium text-primary-700"
-								>
-									{service.price}
-								</span>
-							</div>
-							<p class="text-sm leading-relaxed text-secondary-600">
-								{service.details}
-							</p>
-						</div>
-					{/each}
+				<div class="space-y-4">
+					<div class="service-card bg-primary-50 border-primary-200">
+						<h4 class="mb-2 font-mono font-semibold text-primary-900">
+							Analoge Synthesizer
+						</h4>
+						<ul class="space-y-1 text-sm text-primary-800">
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-primary-600">></span>
+								Moog, ARP, Sequential Circuits
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-primary-600">></span>
+								VCO/VCF Kalibrierung
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-primary-600">></span>
+								Envelope & LFO Service
+							</li>
+						</ul>
+					</div>
+
+					<div class="service-card bg-primary-50 border-primary-200">
+						<h4 class="mb-2 font-mono font-semibold text-primary-900">
+							Digitale Synthesizer
+						</h4>
+						<ul class="space-y-1 text-sm text-primary-800">
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-primary-600">></span>
+								Roland, Yamaha, Korg
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-primary-600">></span>
+								Firmware Updates
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-primary-600">></span>
+								Display & Interface Repair
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
-		{/each}
+
+			<!-- Circuit Care -->
+			<div class="space-y-6">
+				<div class="text-center">
+					<div class="mb-4 text-6xl">🔬</div>
+					<h3 class="mb-4 font-mono text-2xl font-bold text-accent-600">
+						Circuit Care
+					</h3>
+					<p class="text-secondary-600">
+						Professionelle Circuit-Level Diagnostik und Komponenten-Service
+					</p>
+				</div>
+
+				<div class="space-y-4">
+					<div class="service-card bg-accent-50 border-accent-200">
+						<h4 class="mb-2 font-mono font-semibold text-accent-900">
+							PCB Diagnostik
+						</h4>
+						<ul class="space-y-1 text-sm text-accent-800">
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-accent-600">></span>
+								Mikroskopische Inspektion
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-accent-600">></span>
+								Komponenten-Stress Test
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-accent-600">></span>
+								Signal-Trace Analyse
+							</li>
+						</ul>
+					</div>
+
+					<div class="service-card bg-accent-50 border-accent-200">
+						<h4 class="mb-2 font-mono font-semibold text-accent-900">
+							Präventive Wartung
+						</h4>
+						<ul class="space-y-1 text-sm text-accent-800">
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-accent-600">></span>
+								Kondensator-Profil
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-accent-600">></span>
+								Thermische Analyse
+							</li>
+							<li class="flex items-center">
+								<span class="mr-2 font-mono text-accent-600">></span>
+								Contact-Reinigung
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Combination Service Highlight -->
+		<div class="mt-12 text-center">
+			<div class="mx-auto max-w-4xl rounded-lg bg-gradient-to-r from-primary-600 to-accent-600 p-8 text-white">
+				<h3 class="mb-4 font-mono text-2xl font-bold">
+					Die perfekte Kombination
+				</h3>
+				<p class="mb-6 text-lg">
+					Unser einzigartiger Ansatz kombiniert tiefes Verständnis für Synthesizer-Design 
+					mit modernster Circuit-Analyse-Technologie.
+				</p>
+				<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+					<div class="rounded bg-white/10 p-4">
+						<div class="mb-2 font-mono text-lg font-bold">30+</div>
+						<div class="text-sm">Jahre Synthesizer-Erfahrung</div>
+					</div>
+					<div class="rounded bg-white/10 p-4">
+						<div class="mb-2 font-mono text-lg font-bold">250+</div>
+						<div class="text-sm">Vintage Synthesizer restauriert</div>
+					</div>
+					<div class="rounded bg-white/10 p-4">
+						<div class="mb-2 font-mono text-lg font-bold">99.2%</div>
+						<div class="text-sm">Erfolgsrate bei Restaurationen</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- DJ Equipment Section -->
+<section class="bg-secondary-50 border-secondary-200 border-t py-16">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="mb-12 text-center">
+			<div class="mb-4 text-6xl">🎧</div>
+			<h2 class="mb-4 font-mono text-3xl font-bold text-secondary-900">
+				DJ Equipment Service
+			</h2>
+			<p class="mx-auto max-w-2xl text-lg text-secondary-600">
+				Professionelle Wartung und Reparatur für DJ-Equipment, Mixer und Turntables
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+			{#each djServices as service}
+				<div class="service-card bg-secondary-100 border-secondary-300">
+					<div class="mb-4 flex items-start justify-between">
+						<h3 class="font-mono text-xl font-semibold text-secondary-900">
+							{service.name}
+						</h3>
+						<span
+							class="bg-secondary-700 rounded-full px-3 py-1 font-mono text-sm font-medium text-white"
+						>
+							{service.price}
+						</span>
+					</div>
+					<p class="text-sm leading-relaxed text-secondary-700">
+						{service.details}
+					</p>
+				</div>
+			{/each}
+		</div>
 	</div>
 </section>
 
 <!-- Process -->
-<section class="bg-secondary-50 py-16">
+<section class="bg-white py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="mb-12 text-center">
-			<h2 class="mb-4 font-mono text-3xl font-bold text-secondary-900">Repair Process</h2>
+			<h2 class="mb-4 font-mono text-3xl font-bold text-secondary-900">Service Process</h2>
 			<p class="text-lg text-secondary-600">
-				Unser standardisierter 4-Stufen Reparaturprozess für maximale Qualität
+				Unser standardisierter 4-Stufen Prozess für maximale Qualität
 			</p>
 		</div>
 
@@ -204,8 +303,8 @@
 		</div>
 
 		<p class="mx-auto mb-8 max-w-2xl text-blue-100">
-			Alle Reparaturen kommen mit 12 Monaten Garantie. Express-Service verfügbar. Wir verwenden
-			ausschließlich Original-Komponenten oder hochwertige Äquivalente.
+			Alle Reparaturen kommen mit 12 Monaten Garantie. Express-Service verfügbar. 
+			Wir verwenden ausschließlich Original-Komponenten oder hochwertige Äquivalente.
 		</p>
 
 		<a
